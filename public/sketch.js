@@ -31,8 +31,8 @@
 // TODO 5
 let socket = io();
 
-const CANVASW = 1024; 
-const CANVASH = 512; 
+const CANVASW = windowHeight; 
+const CANVASH = windowWidth; 
 
 let fridge;
 let magnetDragged;
