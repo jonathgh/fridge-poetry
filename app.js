@@ -30,7 +30,7 @@ const mongoose = require('mongoose');
 
 const pw = '3g@Xx%3wXJYjATi5#&Bp';
 const pwURI = encodeURIComponent(pw);
-const dbURL = 'mongodb+srv://jho-01:' + pwURI + '@mongocluster01.aecoh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const dbURL = 'mongodb+srv://jho-01:' + pwURI + '@mongocluster01.aecoh.mongodb.net/fridge_magnets?retryWrites=true&w=majority';
 
 mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('Connection established with: ',dbURL ))
@@ -42,9 +42,8 @@ let MagnetSchema = new mongoose.Schema(
         index: Number,
         x: Number,
         y: Number,
-    }
-);
-
+    });
+    
 let Magnet = mongoose.model('magnet', MagnetSchema);
 
 
@@ -66,24 +65,27 @@ io.on('connection', socket =>
     console.log('New client connected');
 
     // TODO 13
-    socket.on('clientSetupReady', () => 
+    socket.on('clientSetupReady', () =>
     {
         console.log('Client ready');
 
         Magnet.find()
-            .then(docs =>
+            .then(docs => 
+            {
+                if(docs.length == 0)
                 {
-                    if(docs.length == 0){
-                        //TODO 14
-                        console.log('Init Database');
-                        socket.emit('serverAsksForMagnetData');
-                    } else {
-                        //TODO 17
-                        console.log('Init Client');
-                        socket.emit('serverSendsDbData', dataDb);
-                    }
-                })
-                .catch(err => console.error(err));
+                    // TODO 14
+                    console.log('Init Database');
+
+                }
+                else
+                {
+                    // TODO 17
+                    console.log('Init Client');
+
+                }
+            })
+            .catch(err => console.error(err));
     });
 
     // TODO 7

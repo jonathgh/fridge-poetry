@@ -32,7 +32,7 @@
 let socket = io();
 
 const CANVASW = windowHeight; 
-const CANVASH = windowWidth; 
+const CANVASH = windowWidth;
 
 let fridge;
 let magnetDragged;
