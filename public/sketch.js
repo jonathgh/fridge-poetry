@@ -66,7 +66,7 @@ function setup()
         fridge.magnets[data.index].y = data.y;
     });
 
-    // TODO 15
+    // TODO 15clientSetupReady
     socket.on('serverAsksForMagnetData', () => 
     {
         console.log('Sending all Magnet data');
@@ -96,6 +96,7 @@ function setup()
 
     // TODO 12
     socket.emit('clientSetupReady');
+    console.log("sent Client Ready Signal")
 
 }
 
