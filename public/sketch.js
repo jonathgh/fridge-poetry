@@ -40,7 +40,7 @@ let magnetDragged;
 function preload() 
 {
     // Keep in mind that you have to clear the database first for switching words
-    fridge = new Fridge('./data/text/wordkit_happiness.txt'); //~200 words
+    let fridge = new Fridge('./data/text/wordkit_happiness.txt'); //~200 words
 
 
     // fridge = new Fridge('./data/text/wordkit_original.txt'); //~300 words
@@ -70,7 +70,7 @@ function setup()
     socket.on('serverAsksForMagnetData', () => 
     {
         console.log('Sending all Magnet data');
-        for (let i = 0, i < fridge.magnets.length; i++) {
+        for (let i = 0; i < fridge.magnets.length; i++) {
             let data = 
             {
                 index: fridge.magnets[i].index,
