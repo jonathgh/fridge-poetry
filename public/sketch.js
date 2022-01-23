@@ -40,7 +40,7 @@ let magnetDragged;
 function preload() 
 {
     // Keep in mind that you have to clear the database first for switching words
-    let fridge = new Fridge('./data/text/wordkit_happiness.txt'); //~200 words
+    fridge = new Fridge('./data/text/wordkit_happiness.txt'); //~200 words
 
 
     // fridge = new Fridge('./data/text/wordkit_original.txt'); //~300 words
